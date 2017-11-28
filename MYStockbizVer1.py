@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 import requests
 import json
 
-NoofStocks = 7;
+NoofStocks = 2;
 # Define length of array
 w, h = 2, NoofStocks;
 stocks = [[0 for x in range(w)] for y in range(h)]
@@ -14,12 +14,7 @@ url = [0 for y in range(h)]
 quote = [0 for y in range(h)]
 # Stock name and code
 stocks = [['COMFORT','2127'],
-        ['GPACKET','0082'],
-        ['HEVEA','5095'],
-        ['MBL','5152'],
-        ['PTRANS','0186'],
-        ['PTRANS_WA','0186WA'],
-        ['UCHITECH','7100']]
+        ['GPACKET','0082']]
 
 def getStockPrice(url):
   page = requests.get(url)
