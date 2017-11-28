@@ -10,7 +10,9 @@ NoofStocks = 2;
 w, h = 2, NoofStocks;
 stocks = [[0 for x in range(w)] for y in range(h)]
 url = [0 for y in range(h)]
-quote = [0 for y in range(h)]
+
+# no need to create a fixed size array actually
+quote = [] 
 # Stock name and code
 stocks = [['COMFORT','2127'],
         ['GPACKET','0082']]
@@ -20,8 +22,10 @@ def getStockPrice(url):
   soup = BeautifulSoup(page.content, 'html.parser')
   quote = soup.find(id="MainContent_lbQuoteLast")
   quote = quote.text
-  return quote
   print quote
+  # force type conversion
+  return float(quote) 
+  
 
 #number of stocks counter
 count = 0
@@ -30,8 +34,7 @@ Max = len(stocks)
 
 while (count < Max):
     url[count] = 'http://www.malaysiastock.biz/Corporate-Infomation.aspx?securityCode=%s' %(stocks[count][1])
-    print url[count]
-    quote[count] = getStockPrice(url[count])
+    quote.append(getStockPrice(url[count]))
     count = count + 1
 
 if count == Max:
